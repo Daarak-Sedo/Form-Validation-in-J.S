@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>user validation form </title>
+  <style>
+    h {
+      position: absolute;
+      margin-left: 40%;
+      top: 1cm;
+      color: aqua;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 50px;
+    }
+
+    .cointanier {
+      position: absolute;
+      left: 18cm;
+      top: 4cm;
+      border-radius: 8px;
+      padding: 1cm;
+      background-color: rgb(46, 46, 46);
+    }
+
+    button {
+      margin-left: 2.5cm;
+      background-color: rgb(239, 241, 138);
+      padding: 5px 25px;
+      border-radius: 10px;
+    }
+
+    @media screen and (max-width:500px) {
+      h {
+        top: 2cm;
+        color: rgb(225, 0, 255);
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 22px;
+
+      }
+
+      .cointanier {
+        position: absolute;
+        left: 3cm;
+        top: 4cm;
+        border-radius: 8px;
+        padding: 1cm;
+        background-color: rgb(46, 46, 46);
+      }
+
+      button {
+        margin-left: 2.5cm;
+        background-color: rgb(239, 241, 138);
+        padding: 5px 25px;
+        border-radius: 10px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <h>FORM VALIDATION</h>
+  <br /><br />
+
+  <form onsubmit=" return formValidate()">
+
+    <div class="cointanier">
+      <label style="color:rgb(10, 241, 37)"> User Name </label>
+      <input type="text" placeholder="enter your name" onchange="user()" id="user">
+      <br />
+      <p style="color:red" id="userError"></p>
+
+      <label style="color:rgb(8, 250, 8)"> Password </label>
+      <input type="password" placeholder="set password" onchange="password()" id="password">
+      <br />
+      <P style="color:red" id="passwordError"></P>
+
+      <button>submit</button>
+    </div>
+  </form>
+
+
+  <script>
+    let user = document.getElementById("user");
+    let pass = document.getElementById("password");
+    let submit = true
+
+    function formValidate() {
+      if (user.value == "") {
+        // alert("username empaty")
+        document.getElementById("userError").innerHTML = "userName empaty";
+        submit = false
+      }
+      else if (user.value.length <= 8) {
+        document.getElementById("userError").innerHTML = "uer name must be min 8 char";
+        submit = false
+      }
+      else {
+        document.getElementById("userError").innerHTML = " ";
+        submit = true
+      }
+
+
+      if (password.value == "") {
+        document.getElementById("passwordError").innerHTML = "enter password";
+        submit = false
+      }
+      else {
+        document.getElementById("passwordError").innerHTML = ""
+        submit = true
+      }
+
+      if (submit == true) {
+        return true
+      } else {
+        return false
+      }
+
+
+      return false
+    }
+
+  </script>
+
+</body>
+
+</html>
